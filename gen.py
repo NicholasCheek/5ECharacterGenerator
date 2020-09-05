@@ -1,7 +1,7 @@
 from random import randint, choice
 
 def generate_race():
-    races = ['human', 'elf', 'dwarf', 'halfling']
+    races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'halfling', 'half-orc', 'human', 'tiefling']
     race = choice(races)
     return race
 
@@ -54,7 +54,7 @@ class Character():
     def __init__(self):
         self.race = generate_race()
         self.char_class = generate_class()
-        self.stats = generate_character_stats()
+        self.stats = [15, 14, 13, 12, 10, 8]
 
         if self.char_class == 'barbarian':
             self.strength = self.stats[0]
@@ -71,7 +71,7 @@ class Character():
             self.wisdom = self.stats[w]
             self.stats.pop(w)
             self.charisma = self.stats[0]
-            self.hit_points = 12 + stat_mod(self.constitution)
+            self.hit_die = 12
         elif self.char_class == 'bard':
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -87,7 +87,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.wisdom = self.stats[0]
-            self.hit_points = 8 + stat_mod(self.constitution)
+            self.hit_die = 8
         elif self.char_class == 'cleric':
             self.wisdom = self.stats[0]
             self.stats.pop(0)
@@ -103,7 +103,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.charisma = self.stats[0]
-            self.hit_points = 8 + stat_mod(self.constitution)
+            self.hit_die = 8
         elif self.char_class == 'druid':
             self.wisdom = self.stats[0]
             self.stats.pop(0)
@@ -119,7 +119,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.charisma = self.stats[0]
-            self.hit_points = 8 + stat_mod(self.constitution)
+            self.hit_die = 8
         elif self.char_class == 'fighter':
             n = randint(0,1)
             if n == 0:
@@ -180,7 +180,7 @@ class Character():
                     self.wisdom = self.stats[w]
                     self.stats.pop(w)
                     self.charisma = self.stats[0]
-            self.hit_points = 10 + stat_mod(self.constitution)
+            self.hit_die = 10
         elif self.char_class == 'monk':
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -196,7 +196,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.charisma = self.stats[0]
-            self.hit_points = 8 + stat_mod(self.constitution)
+            self.hit_die = 8
         elif self.char_class == 'paladin':
             self.strength = self.stats[0]
             self.stats.pop(0)
@@ -212,7 +212,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.wisdom = self.stats[0]
-            self.hit_points = 10 + stat_mod(self.constitution)
+            self.hit_die = 10
         elif self.char_class == 'ranger':
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -228,7 +228,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.charisma = self.stats[0]
-            self.hit_points = 10 + stat_mod(self.constitution)
+            self.hit_die = 10
         elif self.char_class == 'rogue':
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -259,7 +259,7 @@ class Character():
                 self.wisdom = self.stats[w]
                 self.stats.pop(w)
                 self.intelligence = self.stats[0]
-            self.hit_points = 8 + stat_mod(self.constitution)
+            self.hit_die = 8
         elif self.char_class == 'sorcerer':
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -275,7 +275,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.wisdom = self.stats[0]
-            self.hit_points = 6 + stat_mod(self.constitution)
+            self.hit_die = 6
         elif self.char_class == 'warlock':
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -291,7 +291,7 @@ class Character():
             self.intelligence = self.stats[i]
             self.stats.pop(i)
             self.wisdom = self.stats[0]
-            self.hit_points = 6 + stat_mod(self.constitution)
+            self.hit_die = 6
         elif self.char_class == 'wizard':
             self.intelligence = self.stats[0]
             self.stats.pop(0)
@@ -346,7 +346,71 @@ class Character():
                     self.wisdom = self.stats[w]
                     self.stats.pop(w)
                     self.charisma = self.stats[0]
-            self.hit_points = 6 + stat_mod(self.constitution)
+            self.hit_die = 6
+
+        if self.race == 'dragonborn':
+            self.strength += 2
+            self.charisma += 1
+            draconic_ancestry = ['black', 'blue', 'brass', 'bronze', 'copper', 'gold', 'green', 'red', 'silver', 'white']
+            self.subrace = choice(draconic_ancestry)
+        elif self.race == 'dwarf':
+            self.constitution += 2
+            sr = randint(0,1)
+            if sr == 0:
+                self.subrace = 'hill dwarf'
+                self.wisdom += 1
+            else:
+                self.subrace = 'mountain dwarf'
+                self.strength += 2
+        elif self.race == 'elf':
+            self.dexterity += 2
+            sr = randint(0,1)
+            if sr == 0:
+                self.subrace = 'high elf'
+                self.intelligence += 1
+            else:
+                self.subrace = 'wood elf'
+                self.wisdom += 1
+        elif self.race == 'gnome':
+            self.intelligence += 2
+            sr = randint(0,1)
+            if sr == 0:
+                self.subrace = 'deep gnome'
+                self.dexterity += 1
+            else:
+                self.subrace = 'rock gnome'
+                self.constitution += 1
+        #elif self.race = 'half elf'
+        elif self.race == 'halfling':
+            self.dexterity += 2
+            sr = randint(0,1)
+            if sr == 0:
+                self.subrace = 'lightfoot halfling'
+                self.charisma += 1
+            else:
+                self.subrace = 'stout halfling'
+                self.constitution += 1
+        elif self.race == 'half-orc':
+            self.subrace = 'n/a'
+            self.strength += 2
+            self. constitution += 1
+        elif self.race == 'human':
+            human_ethnicities = ['calishite', 'chondathian', 'damaran', 'illuskan', 'mulan', 'rashemi', 'shou', 'tethyrian', 'turami']
+            self.subrace = 'n/a'
+            self.strength += 1
+            self.constitution += 1
+            self.dexterity += 1
+            self.intelligence += 1
+            self.wisdom += 1
+            self.charisma += 1
+        elif self.race == 'tiefling':
+            self.subrace = 'n/a'
+            self.charisma += 2
+            self.intelligence += 1
+
+        self.hit_points = self.hit_die + stat_mod(self.constitution)
+        if self.subrace == 'hill dwarf':
+            self.hit_points += 1
 
         
 
@@ -354,6 +418,7 @@ new_character = Character()
 
 
 print('Race:', new_character.race.capitalize())
+print('Subrace:', new_character.subrace.capitalize())
 print('Class:', new_character.char_class.capitalize())
 print('STR:', new_character.strength)
 print('DEX:', new_character.dexterity)
