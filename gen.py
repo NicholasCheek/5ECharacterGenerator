@@ -54,7 +54,7 @@ class Character():
     def __init__(self):
         self.race = generate_race()
         self.char_class = generate_class()
-        self.stats = [15, 14, 13, 12, 10, 8]
+        self.stats = generate_character_stats()
 
         if self.char_class == 'barbarian':
             self.strength = self.stats[0]
