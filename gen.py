@@ -10,6 +10,11 @@ def generate_class():
     char_class = choice(char_classes)
     return char_class
 
+def generate_sex():
+    sex = ['male', 'female']
+    char_sex = choice(sex)
+    return char_sex
+
 def generate_stat():
     stat_array = []
     count = 0
@@ -52,6 +57,7 @@ def generate_character_stats():
 
 class Character():
     def __init__(self):
+        self.sex = generate_sex()
         self.race = generate_race()
         self.char_class = generate_class()
         self.stats = generate_character_stats()
@@ -353,6 +359,13 @@ class Character():
             self.charisma += 1
             draconic_ancestry = ['black', 'blue', 'brass', 'bronze', 'copper', 'gold', 'green', 'red', 'silver', 'white']
             self.subrace = choice(draconic_ancestry)
+            dragonborn_male = ["Arjhan", "Balasar", "Bharash", "Donaar", "Ghesh", "Heskan", "Kriv", "Medrash", "Mehen", "Nadar", "Pandjed", "Patrin", "Rhogar", "Shamash", "Shedinn", "Tarhun", "Torinn"]
+            dragonborn_female = ["Akra", "Biri", "Daar", "Farideh", "Harann", "Havilar", "Jheri", "Kava", "Korinn", "Mishann", "Nala", "Perra", "Raiann", "Sora", "Surina", "Thava", "Uadjit"]
+            dragonborn_clan = ["Clethtinthiallor", "Daardendrian", "Delmirev", "Drachedandion", "Fenkenkabradon", "Kepeshkmolik", "Kerrhylon", "Kimbatuul", "Linxakasendalor", "Myastan", "Nemmonis", "Norixius", "Ophinshtalajiir", "Prexijandilin", "Shestendeliath", "Turnuroth", "Verthisathurgiesh", "Yarjerit"]
+            if self.sex == 'male':
+                self.name = choice(dragonborn_male) + ' ' + choice(dragonborn_clan)
+            else:
+                self.name = choice(dragonborn_female) + ' ' + choice(dragonborn_clan)
         elif self.race == 'dwarf':
             self.constitution += 2
             sr = randint(0,1)
@@ -362,6 +375,13 @@ class Character():
             else:
                 self.subrace = 'mountain dwarf'
                 self.strength += 2
+            dwarf_male = [ "Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Bruenor", "Dain", "Darrak", "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorin", "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"]
+            dwarf_female = ["Amber", "Artin", "Audhild", "Bardryn", "Dagnal", "Diesa", "Eldeth", "Falkrunn", "Finellen", "Gunnloda", "Gurdis", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa", "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"]
+            dwarf_clan = ["Balderk", "Battlehammer", "Brawnanvil", "Dankil", "Fireforge", "Frostbeard", "Gorunn", "Holderhek", "Ironfist", "Loderr", "Lutgehr", "Rumnaheim", "Strakeln", "Torunn", "Ungart"]
+            if self.sex == 'male':
+                self.name = choice(dwarf_male) + ' ' + choice(dwarf_clan)
+            else:
+                self.name = choice(dwarf_female) + ' ' + choice(dwarf_clan)
         elif self.race == 'elf':
             self.dexterity += 2
             sr = randint(0,1)
@@ -371,6 +391,13 @@ class Character():
             else:
                 self.subrace = 'wood elf'
                 self.wisdom += 1
+            elf_male = ["Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric", "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo", "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelias", "Peren", "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior", "Tharivol", "Theren", "Varis"]
+            elf_female = ["Adrie", "Althaea", "Anastrianna", "Andraste", "Antinua", "Bethrynna", "Birel", "Caelynn", "Drusilia", "Enna", "Felosial", "Ielenia", "Jelenneth", "Keyleth", "Leshanna", "Lia", "Meriele", "Mialee", "Naivara", "Quelenna", "Quillathe", "Sariel", "Shanairra", "Shava", "Silaqui", "Theirasta", "Thia", "Vadania", "Valanthe", "Xanaphia"]
+            elf_family = ["Amakiir (Gemflower)", "Amastacia (Starflower)", "Galanodel (Moonwhisper)", "Holimion (Diamonddew)", "Ilphelkiir (Gemblossom)", "Liadon (Silverfrond)", "Meliamne (Oakenheel)", "Na&iuml;lo (Nightbreeze)", "Siannodel (Moonbrook)", "Xiloscient (Goldpetal)"]
+            if self.sex == 'male':
+                self.name = choice(elf_male) + ' ' + choice(elf_family)
+            else:
+                self.name = choice(elf_female) + ' ' + choice(elf_family)
         elif self.race == 'gnome':
             self.intelligence += 2
             sr = randint(0,1)
@@ -380,6 +407,14 @@ class Character():
             else:
                 self.subrace = 'rock gnome'
                 self.constitution += 1
+            gnome_male = [ "Alston", "Alvyn", "Boddynock", "Brocc", "Burgell", "Dimble", "Eldon", "Erky", "Fonkin", "Frug", "Gerbo", "Gimble", "Glim", "Jebeddo", "Kellen", "Namfoodle", "Orryn", "Roondar", "Seebo", "Sindri", "Warryn", "Wrenn", "Zook"]
+            gnome_female = ["Bimpnottin", "Breena", "Caramip", "Carlin", "Donella", "Duvamil", "Ella", "Ellyjobell", "Ellywick", "Lilli", "Loopmottin", "Lorilla", "Mardnab", "Nissa", "Nyx", "Oda", "Orla", "Roywyn", "Shamil", "Tana", "Waywocket", "Zanna"]
+            gnome_nickname = ["'Aleslosh'", "'Ashhearth'", "'Badger'", "'Cloak'", "'Doublelock'", "'Filchbatter'", "'Fnipper'", "'Ku'", "'Nim'", "'Oneshoe'", "'Pock'", "'Sparklegem'", "'Stumbleduck'"]
+            gnome_clan = ["Beren", "Daergel", "Folkor", "Garrick", "Nackle", "Murnig", "Ningel", "Raulnor", "Scheppen", "Timbers", "Turren"]
+            if self.sex == 'male':
+                self.name = choice(gnome_male) + ' ' + choice(gnome_nickname) + ' ' + choice(gnome_clan)
+            else:
+                self.name = choice(gnome_female) + ' ' + choice(gnome_nickname) + ' ' + choice(gnome_clan)
         #elif self.race = 'half elf'
         elif self.race == 'halfling':
             self.dexterity += 2
@@ -390,10 +425,23 @@ class Character():
             else:
                 self.subrace = 'stout halfling'
                 self.constitution += 1
+            halfling_male = ["Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan", "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin", "Reed", "Roscoe", "Wellby"]
+            halfling_female = ["Andry", "Bree", "Callie", "Cora", "Euphemia", "Jillian", "Kithri", "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina", "Shaena", "Trym", "Vani", "Verna"]
+            halfling_family = ["Brushgather", "Goodbarrel", "Greenbottle", "High-hill", "Hilltopple", "Leagallow", "Tealeaf", "Thorngage", "Tosscobble", "Underbough"]
+            if self.sex == 'male':
+                self.name = choice(halfling_male) + ' ' + choice(halfling_family)
+            else:
+                self.name = choice(halfling_female) + ' ' + choice(halfling_family)
         elif self.race == 'half-orc':
             self.subrace = 'n/a'
             self.strength += 2
             self. constitution += 1
+            half_orc_male = ["Dench", "Feng", "Gell", "Henk", "Holg", "Imsh", "Keth", "Krusk", "Mhurren", "Ront", "Shump", "Thonk"]
+            half_orc_female = ["Baggi", "Emen", "Engong", "Kansif", "Myev", "Neega", "Ovak", "Ownka", "Shautha", "Sutha", "Vola", "Volen", "Yevelda"]
+            if self.sex == 'male':
+                self.name = choice(half_orc_male)
+            else:
+                self.name = choice(half_orc_female)
         elif self.race == 'human':
             human_ethnicities = ['calishite', 'chondathian', 'damaran', 'illuskan', 'mulan', 'rashemi', 'shou', 'tethyrian', 'turami']
             self.subrace = 'n/a'
@@ -403,10 +451,17 @@ class Character():
             self.intelligence += 1
             self.wisdom += 1
             self.charisma += 1
+            self.name = 'n/a'
         elif self.race == 'tiefling':
             self.subrace = 'n/a'
             self.charisma += 2
             self.intelligence += 1
+            tiefling_male = ["Akmenos", "Amnon", "Barakas", "Damakos", "Ekemon", "Iados", "Kairon", "Leucis", "Melech", "Mordai", "Morthos", "Pelaios", "Skamos", "Therai"]
+            tiefling_female = ["Akta", "Anakis", "Bryseis", "Criella", "Damaia", "Ea", "Kallista", "Lerissa", "Makaria", "Nemeia", "Orianna", "Phelaia", "Rieta"]
+            if self.sex == 'male':
+                self.name = choice(tiefling_male)
+            else:
+                self.name = choice(tiefling_female)
 
         self.hit_points = self.hit_die + stat_mod(self.constitution)
         if self.subrace == 'hill dwarf':
@@ -416,7 +471,7 @@ class Character():
 
 new_character = Character()
 
-
+print('Name:', new_character.name)
 print('Race:', new_character.race.capitalize())
 print('Subrace:', new_character.subrace.capitalize())
 print('Class:', new_character.char_class.capitalize())
