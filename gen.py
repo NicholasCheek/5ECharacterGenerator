@@ -1,5 +1,31 @@
+#!/usr/bin/env python
+"""Quickly roll a new character for both players and Game Masters"""
+
+# gen.py
+# D20 Character Generator v 1.0.0
+# Nicholas Cheek
+
+## License
+
+# Copyright (C) 2020  Nicholas Cheek.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# Imports
 from random import randint, choice
 
+## Functions
 def generate_race():
     races = ['dragonborn', 'dwarf', 'elf', 'gnome', 'halfling', 'half-orc', 'human', 'tiefling']
     race = choice(races)
