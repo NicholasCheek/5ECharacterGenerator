@@ -7,7 +7,7 @@
 
 # Copyright (C) 2020  Nicholas Cheek.
 #
-# This program is free software: you can redistribute it and/or modify
+# This program is free software: you can redistibute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
@@ -21,10 +21,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Imports
+from math import floor
 from random import randint, choice
 
 # Variables
-races = [
+RACES = [
     'dragonborn',
     'dwarf',
     'elf',
@@ -33,7 +34,7 @@ races = [
     'half-orc',
     'human',
     'tiefling']
-char_classes = [
+CHAR_CLASSES = [
     'barbarian',
     'bard',
     'cleric',
@@ -46,23 +47,23 @@ char_classes = [
     'sorcerer',
     'warlock',
     'wizard']
-sex = [
+SEX = [
     'male',
     'female',
     'intersex']
 # Dragonborn
-draconic_ancestry = [
-    'black',
-    'blue',
-    'brass',
-    'bronze',
-    'copper',
-    'gold',
-    'green',
-    'red',
-    'silver',
-    'white']
-dragonborn_male = [
+DRACONIC_ANCESTRY = [
+    'Black',
+    'Blue',
+    'Brass',
+    'Bronze',
+    'Copper',
+    'Gold',
+    'Green',
+    'Red',
+    'Silver',
+    'White']
+DRAGONBORN_MALE = [
     "Arjhan",
     "Balasar",
     "Bharash",
@@ -80,7 +81,7 @@ dragonborn_male = [
     "Shedinn",
     "Tarhun",
     "Torinn"]
-dragonborn_female = [
+DRAGONBORN_FEMALE = [
     "Akra",
     "Biri",
     "Daar",
@@ -98,7 +99,7 @@ dragonborn_female = [
     "Surina",
     "Thava",
     "Uadjit"]
-dragonborn_clan = [
+DRAGONBORN_CLAN = [
     "Clethtinthiallor",
     "Daardendrian",
     "Delmirev",
@@ -118,7 +119,7 @@ dragonborn_clan = [
     "Verthisathurgiesh",
     "Yarjerit"]
 # Dwarf
-dwarf_male = [
+DWARF_MALE = [
     "Adrik",
     "Alberich",
     "Baern",
@@ -149,7 +150,7 @@ dwarf_male = [
     "Ulfgar",
     "Veit",
     "Vondal"]
-dwarf_female = [
+DWARF_FEMALE = [
     "Amber",
     "Artin",
     "Audhild",
@@ -164,7 +165,7 @@ dwarf_female = [
     "Helja",
     "Hlin",
     "Kathra",
-    "Kristryd",
+    "Kristyd",
     "Ilde",
     "Liftrasa",
     "Mardred",
@@ -172,8 +173,8 @@ dwarf_female = [
     "Sannl",
     "Torbera",
     "Torgga",
-    "Vistra"]
-dwarf_clan = [
+    "Vista"]
+DWARF_CLAN = [
     "Balderk",
     "Battlehammer",
     "Brawnanvil",
@@ -190,7 +191,7 @@ dwarf_clan = [
     "Torunn",
     "Ungart"]
 # Elf
-elf_male = [
+ELF_MALE = [
     "Adran",
     "Aelar",
     "Aramil",
@@ -220,10 +221,10 @@ elf_male = [
     "Tharivol",
     "Theren",
     "Varis"]
-elf_female = [
+ELF_FEMALE = [
     "Adrie",
     "Althaea",
-    "Anastrianna",
+    "Anastianna",
     "Andraste",
     "Antinua",
     "Bethrynna",
@@ -251,7 +252,7 @@ elf_female = [
     "Vadania",
     "Valanthe",
     "Xanaphia"]
-elf_family = [
+ELF_FAMILY = [
     "Amakiir (Gemflower)",
     "Amastacia (Starflower)",
     "Galanodel (Moonwhisper)",
@@ -263,7 +264,7 @@ elf_family = [
     "Siannodel (Moonbrook)",
     "Xiloscient (Goldpetal)"]
 # Gnome
-gnome_male = [
+GNOME_MALE = [
     "Alston",
     "Alvyn",
     "Boddynock",
@@ -287,7 +288,7 @@ gnome_male = [
     "Warryn",
     "Wrenn",
     "Zook"]
-gnome_female = [
+GNOME_FEMALE = [
     "Bimpnottin",
     "Breena",
     "Caramip",
@@ -310,7 +311,7 @@ gnome_female = [
     "Tana",
     "Waywocket",
     "Zanna"]
-gnome_nickname = [
+GNOME_NICKNAME = [
     "'Aleslosh'",
     "'Ashhearth'",
     "'Badger'",
@@ -324,7 +325,7 @@ gnome_nickname = [
     "'Pock'",
     "'Sparklegem'",
     "'Stumbleduck'"]
-gnome_clan = [
+GNOME_CLAN = [
     "Beren",
     "Daergel",
     "Folkor",
@@ -337,7 +338,7 @@ gnome_clan = [
     "Timbers",
     "Turren"]
 # Halfling
-halfling_male = [
+HALFLING_MALE = [
     "Alton",
     "Ander",
     "Cade",
@@ -355,7 +356,7 @@ halfling_male = [
     "Reed",
     "Roscoe",
     "Wellby"]
-halfling_female = [
+HALFLING_FEMALE = [
     "Andry",
     "Bree",
     "Callie",
@@ -374,7 +375,7 @@ halfling_female = [
     "Trym",
     "Vani",
     "Verna"]
-halfling_family = [
+HALFLING_FAMILY = [
     "Brushgather",
     "Goodbarrel",
     "Greenbottle",
@@ -386,7 +387,7 @@ halfling_family = [
     "Tosscobble",
     "Underbough"]
 # Half Orc
-half_orc_male = [
+HALF_ORC_MALE = [
     "Dench",
     "Feng",
     "Gell",
@@ -399,7 +400,7 @@ half_orc_male = [
     "Ront",
     "Shump",
     "Thonk"]
-half_orc_female = [
+HALF_ORC_FEMALE = [
     "Baggi",
     "Emen",
     "Engong",
@@ -414,7 +415,7 @@ half_orc_female = [
     "Volen",
     "Yevelda"]
 # Human
-human_ethnicities = [
+HUMAN_ETHNICITIES = [
     'calishite',
     'chondathian',
     'damaran',
@@ -425,7 +426,7 @@ human_ethnicities = [
     'tethyrian',
     'turami']
 # Tiefling
-tiefling_male = [
+TIEFLING_MALE = [
     "Akmenos",
     "Amnon",
     "Barakas",
@@ -440,7 +441,7 @@ tiefling_male = [
     "Pelaios",
     "Skamos",
     "Therai"]
-tiefling_female = [
+TIEFLING_FEMALE = [
     "Akta",
     "Anakis",
     "Bryseis",
@@ -459,19 +460,19 @@ tiefling_female = [
 # Functions
 def generate_race():
     """Generate a race"""
-    race = choice(races)
+    race = choice(RACES)
     return race
 
 
 def generate_class():
     """Generate a class"""
-    char_class = choice(char_classes)
+    char_class = choice(CHAR_CLASSES)
     return char_class
 
 
 def generate_sex():
-    """Generate a sex"""
-    char_sex = choice(sex)
+    """Generate a SEX"""
+    char_sex = choice(SEX)
     return char_sex
 
 
@@ -491,22 +492,10 @@ def generate_stat():
     return stat
 
 
-def stat_mod(x):
+def stat_mod(mod):
     """Generate stat modifiers"""
-    if x in (8, 9):
-        return -1
-    elif x in (10, 11):
-        return 0
-    elif x in (12, 13):
-        return 1
-    elif x in (14, 15):
-        return 2
-    elif x in (16, 17):
-        return 3
-    elif x in (18, 19):
-        return 4
-    else:
-        return 5
+    # Modifier = (Stat / 2) - 5 rounded down
+    return int(floor((mod/2)-5))
 
 
 def generate_character_stats():
@@ -534,15 +523,15 @@ class Character():
             self.stats.pop(0)
             self.constitution = self.stats[0]
             self.stats.pop(0)
-            d = randint(0, 3)
-            self.dexterity = self.stats[d]
-            self.stats.pop(d)
-            i = randint(0, 2)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
-            w = randint(0, 1)
-            self.wisdom = self.stats[w]
-            self.stats.pop(w)
+            dex = randint(0, 3)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            intelligence = randint(0, 2)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
+            wis = randint(0, 1)
+            self.wisdom = self.stats[wis]
+            self.stats.pop(wis)
             self.charisma = self.stats[0]
             self.hit_die = 12
         elif self.char_class == 'bard':
@@ -550,31 +539,31 @@ class Character():
             self.stats.pop(0)
             self.dexterity = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            c = randint(0, 2)
-            self.constitution = self.stats[c]
-            self.stats.pop(c)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            con = randint(0, 2)
+            self.constitution = self.stats[con]
+            self.stats.pop(con)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 8
         elif self.char_class == 'cleric':
             self.wisdom = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 1)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
+            strength = randint(0, 1)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
             self.constitution = self.stats[0]
             self.stats.pop(0)
-            d = randint(0, 2)
-            self.dexterity = self.stats[d]
-            self.stats.pop(d)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            dex = randint(0, 2)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
         elif self.char_class == 'druid':
@@ -582,15 +571,15 @@ class Character():
             self.stats.pop(0)
             self.constitution = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            d = randint(0, 2)
-            self.dexterity = self.stats[d]
-            self.stats.pop(d)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dex = randint(0, 2)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
         elif self.char_class == 'fighter':
@@ -602,27 +591,27 @@ class Character():
                 if n2 == 0:
                     self.intelligence = self.stats[0]
                     self.stats.pop(0)
-                    c = randint(0, 3)
-                    self.constitution = self.stats[c]
-                    self.stats.pop(c)
-                    d = randint(0, 2)
-                    self.dexterity = self.stats[d]
-                    self.stats.pop(d)
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    con = randint(0, 3)
+                    self.constitution = self.stats[con]
+                    self.stats.pop(con)
+                    dex = randint(0, 2)
+                    self.dexterity = self.stats[dex]
+                    self.stats.pop(dex)
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
                 else:
                     self.constitution = self.stats[0]
                     self.stats.pop(0)
-                    d = randint(0, 3)
-                    self.dexterity = self.stats[d]
-                    self.stats.pop(d)
-                    i = randint(0, 2)
-                    self.intelligence = self.stats[i]
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    dex = randint(0, 3)
+                    self.dexterity = self.stats[dex]
+                    self.stats.pop(dex)
+                    intelligence = randint(0, 2)
+                    self.intelligence = self.stats[intelligence]
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
             else:
                 self.dexterity = self.stats[0]
@@ -631,27 +620,27 @@ class Character():
                 if n2 == 0:
                     self.intelligence = self.stats[0]
                     self.stats.pop(0)
-                    s = randint(0, 3)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    c = randint(0, 2)
-                    self.constitution = self.stats[c]
-                    self.stats.pop(c)
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    strength = randint(0, 3)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    con = randint(0, 2)
+                    self.constitution = self.stats[con]
+                    self.stats.pop(con)
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
                 else:
                     self.constitution = self.stats[0]
                     self.stats.pop(0)
-                    s = randint(0, 3)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    i = randint(0, 2)
-                    self.intelligence = self.stats[i]
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    strength = randint(0, 3)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    intelligence = randint(0, 2)
+                    self.intelligence = self.stats[intelligence]
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
             self.hit_die = 10
         elif self.char_class == 'monk':
@@ -659,15 +648,15 @@ class Character():
             self.stats.pop(0)
             self.wisdom = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            c = randint(0, 2)
-            self.constitution = self.stats[c]
-            self.stats.pop(c)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            con = randint(0, 2)
+            self.constitution = self.stats[con]
+            self.stats.pop(con)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
         elif self.char_class == 'paladin':
@@ -675,15 +664,15 @@ class Character():
             self.stats.pop(0)
             self.charisma = self.stats[0]
             self.stats.pop(0)
-            d = randint(0, 3)
-            self.dexterity = self.stats[d]
-            self.stats.pop(d)
-            c = randint(0, 2)
-            self.constitution = self.stats[c]
-            self.stats.pop(c)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            dex = randint(0, 3)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            con = randint(0, 2)
+            self.constitution = self.stats[con]
+            self.stats.pop(con)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 10
         elif self.char_class == 'ranger':
@@ -691,15 +680,15 @@ class Character():
             self.stats.pop(0)
             self.wisdom = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            c = randint(0, 2)
-            self.constitution = self.stats[c]
-            self.stats.pop(c)
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            con = randint(0, 2)
+            self.constitution = self.stats[con]
+            self.stats.pop(con)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 10
         elif self.char_class == 'rogue':
@@ -709,28 +698,28 @@ class Character():
             if n == 0:
                 self.intelligence = self.stats[0]
                 self.stats.pop(0)
-                s = randint(0, 3)
-                self.strength = self.stats[s]
-                self.stats.pop(s)
-                c = randint(0, 2)
-                self.constitution = self.stats[c]
-                self.stats.pop(c)
-                w = randint(0, 1)
-                self.wisdom = self.stats[w]
-                self.stats.pop(w)
+                strength = randint(0, 3)
+                self.strength = self.stats[strength]
+                self.stats.pop(strength)
+                con = randint(0, 2)
+                self.constitution = self.stats[con]
+                self.stats.pop(con)
+                wis = randint(0, 1)
+                self.wisdom = self.stats[wis]
+                self.stats.pop(wis)
                 self.charisma = self.stats[0]
             else:
                 self.charisma = self.stats[0]
                 self.stats.pop(0)
-                s = randint(0, 3)
-                self.strength = self.stats[s]
-                self.stats.pop(s)
-                c = randint(0, 2)
-                self.constitution = self.stats[c]
-                self.stats.pop(c)
-                w = randint(0, 1)
-                self.wisdom = self.stats[w]
-                self.stats.pop(w)
+                strength = randint(0, 3)
+                self.strength = self.stats[strength]
+                self.stats.pop(strength)
+                con = randint(0, 2)
+                self.constitution = self.stats[con]
+                self.stats.pop(con)
+                wis = randint(0, 1)
+                self.wisdom = self.stats[wis]
+                self.stats.pop(wis)
                 self.intelligence = self.stats[0]
             self.hit_die = 8
         elif self.char_class == 'sorcerer':
@@ -738,15 +727,15 @@ class Character():
             self.stats.pop(0)
             self.constitution = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            d = randint(0, 2)
-            self.dexterity = self.stats[d]
-            self.stats.pop()
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dex = randint(0, 2)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
         elif self.char_class == 'warlock':
@@ -754,15 +743,15 @@ class Character():
             self.stats.pop(0)
             self.constitution = self.stats[0]
             self.stats.pop(0)
-            s = randint(0, 3)
-            self.strength = self.stats[s]
-            self.stats.pop(s)
-            d = randint(0, 2)
-            self.dexterity = self.stats[d]
-            self.stats.pop()
-            i = randint(0, 1)
-            self.intelligence = self.stats[i]
-            self.stats.pop(i)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dex = randint(0, 2)
+            self.dexterity = self.stats[dex]
+            self.stats.pop(dex)
+            intelligence = randint(0, 1)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
         elif self.char_class == 'wizard':
@@ -776,23 +765,23 @@ class Character():
                 if n2 == 0:
                     self.charisma = self.stats[0]
                     self.stats.pop(0)
-                    s = randint(0, 2)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    d = randint(0, 1)
-                    self.dexterity = self.stats[d]
-                    self.stats.pop(d)
+                    strength = randint(0, 2)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    dex = randint(0, 1)
+                    self.dexterity = self.stats[dex]
+                    self.stats.pop(dex)
                     self.wisdom = self.stats[0]
                 else:
-                    s = randint(0, 3)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    d = randint(0, 2)
-                    self.dexterity = self.stats[d]
-                    self.stats.pop(d)
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    strength = randint(0, 3)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    dex = randint(0, 2)
+                    self.dexterity = self.stats[dex]
+                    self.stats.pop(dex)
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
             else:
                 self.dexterity = self.stats[0]
@@ -801,115 +790,115 @@ class Character():
                 if n2 == 0:
                     self.charisma = self.stats[0]
                     self.stats.pop(0)
-                    s = randint(0, 2)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    c = randint(0, 1)
-                    self.constitution = self.stats[c]
-                    self.stats.pop(c)
+                    strength = randint(0, 2)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    con = randint(0, 1)
+                    self.constitution = self.stats[con]
+                    self.stats.pop(con)
                     self.wisdom = self.stats[0]
                 else:
-                    s = randint(0, 3)
-                    self.strength = self.stats[s]
-                    self.stats.pop(s)
-                    c = randint(0, 2)
-                    self.constitution = self.stats[c]
-                    self.stats.pop(c)
-                    w = randint(0, 1)
-                    self.wisdom = self.stats[w]
-                    self.stats.pop(w)
+                    strength = randint(0, 3)
+                    self.strength = self.stats[strength]
+                    self.stats.pop(strength)
+                    con = randint(0, 2)
+                    self.constitution = self.stats[con]
+                    self.stats.pop(con)
+                    wis = randint(0, 1)
+                    self.wisdom = self.stats[wis]
+                    self.stats.pop(wis)
                     self.charisma = self.stats[0]
             self.hit_die = 6
 
         if self.race == 'dragonborn':
             self.strength += 2
             self.charisma += 1
-            self.subrace = choice(draconic_ancestry)
+            self.subrace = choice(DRACONIC_ANCESTRY)
             if self.sex == 'male':
-                self.name = choice(dragonborn_male) + ' ' + choice(dragonborn_clan)
+                self.name = choice(DRAGONBORN_MALE) + ' ' + choice(DRAGONBORN_CLAN)
             else:
-                self.name = choice(dragonborn_female) + ' ' + choice(dragonborn_clan)
+                self.name = choice(DRAGONBORN_FEMALE) + ' ' + choice(DRAGONBORN_CLAN)
         elif self.race == 'dwarf':
             self.constitution += 2
-            sr = randint(0, 1)
-            if sr == 0:
-                self.subrace = 'hill dwarf'
+            sub_race = randint(0, 1)
+            if sub_race == 0:
+                self.subrace = 'Hill dwarf'
                 self.wisdom += 1
             else:
-                self.subrace = 'mountain dwarf'
+                self.subrace = 'Mountain dwarf'
                 self.strength += 2
             if self.sex == 'male':
-                self.name = choice(dwarf_male) + ' ' + choice(dwarf_clan)
+                self.name = choice(DWARF_MALE) + ' ' + choice(DWARF_CLAN)
             else:
-                self.name = choice(dwarf_female) + ' ' + choice(dwarf_clan)
+                self.name = choice(DWARF_FEMALE) + ' ' + choice(DWARF_CLAN)
         elif self.race == 'elf':
             self.dexterity += 2
-            sr = randint(0, 1)
-            if sr == 0:
-                self.subrace = 'high elf'
+            sub_race = randint(0, 1)
+            if sub_race == 0:
+                self.subrace = 'High elf'
                 self.intelligence += 1
             else:
-                self.subrace = 'wood elf'
+                self.subrace = 'Wood elf'
                 self.wisdom += 1
             if self.sex == 'male':
-                self.name = choice(elf_male) + ' ' + choice(elf_family)
+                self.name = choice(ELF_MALE) + ' ' + choice(ELF_FAMILY)
             else:
-                self.name = choice(elf_female) + ' ' + choice(elf_family)
+                self.name = choice(ELF_FEMALE) + ' ' + choice(ELF_FAMILY)
         elif self.race == 'gnome':
             self.intelligence += 2
-            sr = randint(0, 1)
-            if sr == 0:
-                self.subrace = 'deep gnome'
+            sub_race = randint(0, 1)
+            if sub_race == 0:
+                self.subrace = 'Deep gnome'
                 self.dexterity += 1
             else:
-                self.subrace = 'rock gnome'
+                self.subrace = 'Rock gnome'
                 self.constitution += 1
             if self.sex == 'male':
-                self.name = choice(gnome_male) + ' ' + choice(gnome_nickname) + ' ' + choice(gnome_clan)
+                self.name = choice(GNOME_MALE) + ' ' + choice(GNOME_NICKNAME) + ' ' + choice(GNOME_CLAN)
             else:
-                self.name = choice(gnome_female) + ' ' + choice(gnome_nickname) + ' ' + choice(gnome_clan)
+                self.name = choice(GNOME_FEMALE) + ' ' + choice(GNOME_NICKNAME) + ' ' + choice(GNOME_CLAN)
         # elif self.race = 'half elf'
         elif self.race == 'halfling':
             self.dexterity += 2
-            sr = randint(0, 1)
-            if sr == 0:
-                self.subrace = 'lightfoot halfling'
+            sub_race = randint(0, 1)
+            if sub_race == 0:
+                self.subrace = 'Lightfoot halfling'
                 self.charisma += 1
             else:
-                self.subrace = 'stout halfling'
+                self.subrace = 'Stout halfling'
                 self.constitution += 1
             if self.sex == 'male':
-                self.name = choice(halfling_male) + ' ' + choice(halfling_family)
+                self.name = choice(HALFLING_MALE) + ' ' + choice(HALFLING_FAMILY)
             else:
-                self.name = choice(halfling_female) + ' ' + choice(halfling_family)
+                self.name = choice(HALFLING_FEMALE) + ' ' + choice(HALFLING_FAMILY)
         elif self.race == 'half-orc':
-            self.subrace = 'n/a'
+            self.subrace = 'N/A'
             self.strength += 2
             self. constitution += 1
             if self.sex == 'male':
-                self.name = choice(half_orc_male)
+                self.name = choice(HALF_ORC_MALE)
             else:
-                self.name = choice(half_orc_female)
+                self.name = choice(HALF_ORC_FEMALE)
         elif self.race == 'human':
-            self.subrace = 'n/a'
+            self.subrace = 'N/A'
             self.strength += 1
             self.constitution += 1
             self.dexterity += 1
             self.intelligence += 1
             self.wisdom += 1
             self.charisma += 1
-            self.name = 'n/a'
+            self.name = 'N/A'
         elif self.race == 'tiefling':
-            self.subrace = 'n/a'
+            self.subrace = 'N/A'
             self.charisma += 2
             self.intelligence += 1
             if self.sex == 'male':
-                self.name = choice(tiefling_male)
+                self.name = choice(TIEFLING_MALE)
             else:
-                self.name = choice(tiefling_female)
+                self.name = choice(TIEFLING_FEMALE)
 
         self.hit_points = self.hit_die + stat_mod(self.constitution)
-        if self.subrace == 'hill dwarf':
+        if self.subrace == 'Hill dwarf':
             self.hit_points += 1
 
 
@@ -917,7 +906,7 @@ NEW_CHARACTER = Character()
 
 print('Name:', NEW_CHARACTER.name)
 print('Race:', NEW_CHARACTER.race.capitalize())
-print('Subrace:', NEW_CHARACTER.subrace.capitalize())
+print('Subrace:', NEW_CHARACTER.subrace)
 print('Class:', NEW_CHARACTER.char_class.capitalize())
 print('STR:', NEW_CHARACTER.strength)
 print('DEX:', NEW_CHARACTER.dexterity)
