@@ -22,47 +22,47 @@
 
 # Imports
 from math import floor
-from random import randint, choice
+from random import choice, randint
 
 # Variables
 RACES = [
-    'dragonborn',
-    'dwarf',
-    'elf',
-    'gnome',
-    'halfling',
-    'half-orc',
-    'human',
-    'tiefling']
+    "dragonborn",
+    "dwarf",
+    "elf",
+    "gnome",
+    "halfling",
+    "half-orc",
+    "human",
+    "tiefling",
+]
 CHAR_CLASSES = [
-    'barbarian',
-    'bard',
-    'cleric',
-    'druid',
-    'fighter',
-    'monk',
-    'paladin',
-    'ranger',
-    'rogue',
-    'sorcerer',
-    'warlock',
-    'wizard']
-SEX = [
-    'male',
-    'female',
-    'intersex']
+    "barbarian",
+    "bard",
+    "cleric",
+    "druid",
+    "fighter",
+    "monk",
+    "paladin",
+    "ranger",
+    "rogue",
+    "sorcerer",
+    "warlock",
+    "wizard",
+]
+SEX = ["male", "female", "intersex"]
 # Dragonborn
 DRACONIC_ANCESTRY = [
-    'Black',
-    'Blue',
-    'Brass',
-    'Bronze',
-    'Copper',
-    'Gold',
-    'Green',
-    'Red',
-    'Silver',
-    'White']
+    "Black",
+    "Blue",
+    "Brass",
+    "Bronze",
+    "Copper",
+    "Gold",
+    "Green",
+    "Red",
+    "Silver",
+    "White",
+]
 DRAGONBORN_MALE = [
     "Arjhan",
     "Balasar",
@@ -80,7 +80,8 @@ DRAGONBORN_MALE = [
     "Shamash",
     "Shedinn",
     "Tarhun",
-    "Torinn"]
+    "Torinn",
+]
 DRAGONBORN_FEMALE = [
     "Akra",
     "Biri",
@@ -98,7 +99,8 @@ DRAGONBORN_FEMALE = [
     "Sora",
     "Surina",
     "Thava",
-    "Uadjit"]
+    "Uadjit",
+]
 DRAGONBORN_CLAN = [
     "Clethtinthiallor",
     "Daardendrian",
@@ -117,7 +119,8 @@ DRAGONBORN_CLAN = [
     "Shestendeliath",
     "Turnuroth",
     "Verthisathurgiesh",
-    "Yarjerit"]
+    "Yarjerit",
+]
 # Dwarf
 DWARF_MALE = [
     "Adrik",
@@ -149,7 +152,8 @@ DWARF_MALE = [
     "Travok",
     "Ulfgar",
     "Veit",
-    "Vondal"]
+    "Vondal",
+]
 DWARF_FEMALE = [
     "Amber",
     "Artin",
@@ -173,7 +177,8 @@ DWARF_FEMALE = [
     "Sannl",
     "Torbera",
     "Torgga",
-    "Vista"]
+    "Vista",
+]
 DWARF_CLAN = [
     "Balderk",
     "Battlehammer",
@@ -189,7 +194,8 @@ DWARF_CLAN = [
     "Rumnaheim",
     "Strakeln",
     "Torunn",
-    "Ungart"]
+    "Ungart",
+]
 # Elf
 ELF_MALE = [
     "Adran",
@@ -220,7 +226,8 @@ ELF_MALE = [
     "Thamior",
     "Tharivol",
     "Theren",
-    "Varis"]
+    "Varis",
+]
 ELF_FEMALE = [
     "Adrie",
     "Althaea",
@@ -251,7 +258,8 @@ ELF_FEMALE = [
     "Thia",
     "Vadania",
     "Valanthe",
-    "Xanaphia"]
+    "Xanaphia",
+]
 ELF_FAMILY = [
     "Amakiir (Gemflower)",
     "Amastacia (Starflower)",
@@ -262,7 +270,8 @@ ELF_FAMILY = [
     "Meliamne (Oakenheel)",
     "Na&iuml;lo (Nightbreeze)",
     "Siannodel (Moonbrook)",
-    "Xiloscient (Goldpetal)"]
+    "Xiloscient (Goldpetal)",
+]
 # Gnome
 GNOME_MALE = [
     "Alston",
@@ -287,7 +296,8 @@ GNOME_MALE = [
     "Sindri",
     "Warryn",
     "Wrenn",
-    "Zook"]
+    "Zook",
+]
 GNOME_FEMALE = [
     "Bimpnottin",
     "Breena",
@@ -310,7 +320,8 @@ GNOME_FEMALE = [
     "Shamil",
     "Tana",
     "Waywocket",
-    "Zanna"]
+    "Zanna",
+]
 GNOME_NICKNAME = [
     "'Aleslosh'",
     "'Ashhearth'",
@@ -324,7 +335,8 @@ GNOME_NICKNAME = [
     "'Oneshoe'",
     "'Pock'",
     "'Sparklegem'",
-    "'Stumbleduck'"]
+    "'Stumbleduck'",
+]
 GNOME_CLAN = [
     "Beren",
     "Daergel",
@@ -336,7 +348,8 @@ GNOME_CLAN = [
     "Raulnor",
     "Scheppen",
     "Timbers",
-    "Turren"]
+    "Turren",
+]
 # Halfling
 HALFLING_MALE = [
     "Alton",
@@ -355,7 +368,8 @@ HALFLING_MALE = [
     "Perrin",
     "Reed",
     "Roscoe",
-    "Wellby"]
+    "Wellby",
+]
 HALFLING_FEMALE = [
     "Andry",
     "Bree",
@@ -374,7 +388,8 @@ HALFLING_FEMALE = [
     "Shaena",
     "Trym",
     "Vani",
-    "Verna"]
+    "Verna",
+]
 HALFLING_FAMILY = [
     "Brushgather",
     "Goodbarrel",
@@ -385,7 +400,8 @@ HALFLING_FAMILY = [
     "Tealeaf",
     "Thorngage",
     "Tosscobble",
-    "Underbough"]
+    "Underbough",
+]
 # Half Orc
 HALF_ORC_MALE = [
     "Dench",
@@ -399,7 +415,8 @@ HALF_ORC_MALE = [
     "Mhurren",
     "Ront",
     "Shump",
-    "Thonk"]
+    "Thonk",
+]
 HALF_ORC_FEMALE = [
     "Baggi",
     "Emen",
@@ -413,18 +430,20 @@ HALF_ORC_FEMALE = [
     "Sutha",
     "Vola",
     "Volen",
-    "Yevelda"]
+    "Yevelda",
+]
 # Human
 HUMAN_ETHNICITIES = [
-    'calishite',
-    'chondathian',
-    'damaran',
-    'illuskan',
-    'mulan',
-    'rashemi',
-    'shou',
-    'tethyrian',
-    'turami']
+    "calishite",
+    "chondathian",
+    "damaran",
+    "illuskan",
+    "mulan",
+    "rashemi",
+    "shou",
+    "tethyrian",
+    "turami",
+]
 # Tiefling
 TIEFLING_MALE = [
     "Akmenos",
@@ -440,7 +459,8 @@ TIEFLING_MALE = [
     "Morthos",
     "Pelaios",
     "Skamos",
-    "Therai"]
+    "Therai",
+]
 TIEFLING_FEMALE = [
     "Akta",
     "Anakis",
@@ -454,7 +474,8 @@ TIEFLING_FEMALE = [
     "Nemeia",
     "Orianna",
     "Phelaia",
-    "Rieta"]
+    "Rieta",
+]
 
 
 # Functions
@@ -495,7 +516,7 @@ def generate_stat():
 def stat_mod(mod):
     """Generate stat modifiers"""
     # Modifier = (Stat / 2) - 5 rounded down
-    return int(floor((mod/2)-5))
+    return int(floor((mod / 2) - 5))
 
 
 def generate_character_stats():
@@ -510,15 +531,16 @@ def generate_character_stats():
     return character_stats
 
 
-class Character():
+class Character:
     """Generate character"""
+
     def __init__(self):
         self.sex = generate_sex()
         self.race = generate_race()
         self.char_class = generate_class()
         self.stats = generate_character_stats()
 
-        if self.char_class == 'barbarian':
+        if self.char_class == "barbarian":
             self.strength = self.stats[0]
             self.stats.pop(0)
             self.constitution = self.stats[0]
@@ -534,7 +556,7 @@ class Character():
             self.stats.pop(wis)
             self.charisma = self.stats[0]
             self.hit_die = 12
-        elif self.char_class == 'bard':
+        elif self.char_class == "bard":
             self.charisma = self.stats[0]
             self.stats.pop(0)
             self.dexterity = self.stats[0]
@@ -550,7 +572,7 @@ class Character():
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 8
-        elif self.char_class == 'cleric':
+        elif self.char_class == "cleric":
             self.wisdom = self.stats[0]
             self.stats.pop(0)
             strength = randint(0, 1)
@@ -566,7 +588,7 @@ class Character():
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
-        elif self.char_class == 'druid':
+        elif self.char_class == "druid":
             self.wisdom = self.stats[0]
             self.stats.pop(0)
             self.constitution = self.stats[0]
@@ -582,7 +604,7 @@ class Character():
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
-        elif self.char_class == 'fighter':
+        elif self.char_class == "fighter":
             n = randint(0, 1)
             if n == 0:
                 self.strength = self.stats[0]
@@ -643,7 +665,7 @@ class Character():
                     self.stats.pop(wis)
                     self.charisma = self.stats[0]
             self.hit_die = 10
-        elif self.char_class == 'monk':
+        elif self.char_class == "monk":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
             self.wisdom = self.stats[0]
@@ -659,7 +681,7 @@ class Character():
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
-        elif self.char_class == 'paladin':
+        elif self.char_class == "paladin":
             self.strength = self.stats[0]
             self.stats.pop(0)
             self.charisma = self.stats[0]
@@ -675,7 +697,7 @@ class Character():
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 10
-        elif self.char_class == 'ranger':
+        elif self.char_class == "ranger":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
             self.wisdom = self.stats[0]
@@ -691,7 +713,7 @@ class Character():
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 10
-        elif self.char_class == 'rogue':
+        elif self.char_class == "rogue":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
             n = randint(0, 1)
@@ -722,7 +744,7 @@ class Character():
                 self.stats.pop(wis)
                 self.intelligence = self.stats[0]
             self.hit_die = 8
-        elif self.char_class == 'sorcerer':
+        elif self.char_class == "sorcerer":
             self.charisma = self.stats[0]
             self.stats.pop(0)
             self.constitution = self.stats[0]
@@ -738,7 +760,7 @@ class Character():
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
-        elif self.char_class == 'warlock':
+        elif self.char_class == "warlock":
             self.charisma = self.stats[0]
             self.stats.pop(0)
             self.constitution = self.stats[0]
@@ -754,7 +776,7 @@ class Character():
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
-        elif self.char_class == 'wizard':
+        elif self.char_class == "wizard":
             self.intelligence = self.stats[0]
             self.stats.pop(0)
             n = randint(0, 1)
@@ -810,108 +832,140 @@ class Character():
                     self.charisma = self.stats[0]
             self.hit_die = 6
 
-        if self.race == 'dragonborn':
+        if self.race == "dragonborn":
             self.strength += 2
             self.charisma += 1
             self.subrace = choice(DRACONIC_ANCESTRY)
-            if self.sex == 'male':
-                self.name = choice(DRAGONBORN_MALE) + ' ' + choice(DRAGONBORN_CLAN)
+            if self.sex == "male":
+                self.name = (
+                    choice(DRAGONBORN_MALE) + " "
+                    + choice(DRAGONBORN_CLAN)
+                )
             else:
-                self.name = choice(DRAGONBORN_FEMALE) + ' ' + choice(DRAGONBORN_CLAN)
-        elif self.race == 'dwarf':
+                self.name = (
+                    choice(DRAGONBORN_FEMALE) + " "
+                    + choice(DRAGONBORN_CLAN)
+                )
+        elif self.race == "dwarf":
             self.constitution += 2
             sub_race = randint(0, 1)
             if sub_race == 0:
-                self.subrace = 'Hill dwarf'
+                self.subrace = "Hill dwarf"
                 self.wisdom += 1
             else:
-                self.subrace = 'Mountain dwarf'
+                self.subrace = "Mountain dwarf"
                 self.strength += 2
-            if self.sex == 'male':
-                self.name = choice(DWARF_MALE) + ' ' + choice(DWARF_CLAN)
+            if self.sex == "male":
+                self.name = (
+                    choice(DWARF_MALE) + " "
+                    + choice(DWARF_CLAN)
+                )
             else:
-                self.name = choice(DWARF_FEMALE) + ' ' + choice(DWARF_CLAN)
-        elif self.race == 'elf':
+                self.name = (
+                    choice(DWARF_FEMALE) + " "
+                    + choice(DWARF_CLAN)
+                )
+        elif self.race == "elf":
             self.dexterity += 2
             sub_race = randint(0, 1)
             if sub_race == 0:
-                self.subrace = 'High elf'
+                self.subrace = "High elf"
                 self.intelligence += 1
             else:
-                self.subrace = 'Wood elf'
+                self.subrace = "Wood elf"
                 self.wisdom += 1
-            if self.sex == 'male':
-                self.name = choice(ELF_MALE) + ' ' + choice(ELF_FAMILY)
+            if self.sex == "male":
+                self.name = (
+                    choice(ELF_MALE) + " "
+                    + choice(ELF_FAMILY)
+                    )
             else:
-                self.name = choice(ELF_FEMALE) + ' ' + choice(ELF_FAMILY)
-        elif self.race == 'gnome':
+                self.name = (
+                    choice(ELF_FEMALE) + " "
+                    + choice(ELF_FAMILY)
+                )
+        elif self.race == "gnome":
             self.intelligence += 2
             sub_race = randint(0, 1)
             if sub_race == 0:
-                self.subrace = 'Deep gnome'
+                self.subrace = "Deep gnome"
                 self.dexterity += 1
             else:
-                self.subrace = 'Rock gnome'
+                self.subrace = "Rock gnome"
                 self.constitution += 1
-            if self.sex == 'male':
-                self.name = choice(GNOME_MALE) + ' ' + choice(GNOME_NICKNAME) + ' ' + choice(GNOME_CLAN)
+            if self.sex == "male":
+                self.name = (
+                    choice(GNOME_MALE) + " "
+                    + choice(GNOME_NICKNAME) + " "
+                    + choice(GNOME_CLAN)
+                )
             else:
-                self.name = choice(GNOME_FEMALE) + ' ' + choice(GNOME_NICKNAME) + ' ' + choice(GNOME_CLAN)
-        # elif self.race = 'half elf'
-        elif self.race == 'halfling':
+                self.name = (
+                    choice(GNOME_FEMALE) + " "
+                    + choice(GNOME_NICKNAME) + " "
+                    + choice(GNOME_CLAN)
+                )
+        # elif self.race = "half elf'
+        elif self.race == "halfling":
             self.dexterity += 2
             sub_race = randint(0, 1)
             if sub_race == 0:
-                self.subrace = 'Lightfoot halfling'
+                self.subrace = "Lightfoot halfling"
                 self.charisma += 1
             else:
-                self.subrace = 'Stout halfling'
+                self.subrace = "Stout halfling"
                 self.constitution += 1
-            if self.sex == 'male':
-                self.name = choice(HALFLING_MALE) + ' ' + choice(HALFLING_FAMILY)
+            if self.sex == "male":
+                self.name = (
+                    choice(HALFLING_MALE) + " "
+                    + choice(HALFLING_FAMILY)
+                )
             else:
-                self.name = choice(HALFLING_FEMALE) + ' ' + choice(HALFLING_FAMILY)
-        elif self.race == 'half-orc':
-            self.subrace = 'N/A'
+                self.name = (
+                    choice(HALFLING_FEMALE) + " "
+                    + choice(HALFLING_FAMILY)
+                )
+        elif self.race == "half-orc":
+            self.subrace = "N/A"
             self.strength += 2
-            self. constitution += 1
-            if self.sex == 'male':
+            self.constitution += 1
+            if self.sex == "male":
                 self.name = choice(HALF_ORC_MALE)
             else:
                 self.name = choice(HALF_ORC_FEMALE)
-        elif self.race == 'human':
-            self.subrace = 'N/A'
+        elif self.race == "human":
+            self.subrace = "N/A"
             self.strength += 1
             self.constitution += 1
             self.dexterity += 1
             self.intelligence += 1
             self.wisdom += 1
             self.charisma += 1
-            self.name = 'N/A'
-        elif self.race == 'tiefling':
-            self.subrace = 'N/A'
+            self.name = "N/A"
+        elif self.race == "tiefling":
+            self.subrace = "N/A"
             self.charisma += 2
             self.intelligence += 1
-            if self.sex == 'male':
+            if self.sex == "male":
                 self.name = choice(TIEFLING_MALE)
             else:
                 self.name = choice(TIEFLING_FEMALE)
 
         self.hit_points = self.hit_die + stat_mod(self.constitution)
-        if self.subrace == 'Hill dwarf':
+        if self.subrace == "Hill dwarf":
             self.hit_points += 1
 
 
 NEW_CHARACTER = Character()
 
-print('Name:', NEW_CHARACTER.name)
-print('Race:', NEW_CHARACTER.race.capitalize())
-print('Subrace:', NEW_CHARACTER.subrace)
-print('Class:', NEW_CHARACTER.char_class.capitalize())
-print('STR:', NEW_CHARACTER.strength)
-print('DEX:', NEW_CHARACTER.dexterity)
-print('CON:', NEW_CHARACTER.constitution)
-print('INT:', NEW_CHARACTER.intelligence)
-print('WIS:', NEW_CHARACTER.wisdom)
-print('CHA:', NEW_CHARACTER.charisma)
-print('Hit Points:', NEW_CHARACTER.hit_points)
+print("Name:", NEW_CHARACTER.name)
+print("Race:", NEW_CHARACTER.race.capitalize())
+print("Subrace:", NEW_CHARACTER.subrace)
+print("Class:", NEW_CHARACTER.char_class.capitalize())
+print("STR:", NEW_CHARACTER.strength)
+print("DEX:", NEW_CHARACTER.dexterity)
+print("CON:", NEW_CHARACTER.constitution)
+print("INT:", NEW_CHARACTER.intelligence)
+print("WIS:", NEW_CHARACTER.wisdom)
+print("CHA:", NEW_CHARACTER.charisma)
+print("Hit Points:", NEW_CHARACTER.hit_points)
