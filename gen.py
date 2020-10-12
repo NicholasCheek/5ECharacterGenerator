@@ -49,7 +49,6 @@ CHAR_CLASSES = [
     "warlock",
     "wizard",
 ]
-SEX = ["male", "female", "intersex"]
 # Dragonborn
 DRACONIC_ANCESTRY = [
     "Black",
@@ -491,12 +490,6 @@ def generate_class():
     return char_class
 
 
-def generate_sex():
-    """Generate a SEX"""
-    char_sex = choice(SEX)
-    return char_sex
-
-
 def generate_stat():
     """Generate a stat block"""
     stat_array = []
@@ -535,7 +528,6 @@ class Character:
     """Generate character"""
 
     def __init__(self):
-        self.sex = generate_sex()
         self.race = generate_race()
         self.char_class = generate_class()
         self.stats = generate_character_stats()
@@ -605,12 +597,10 @@ class Character:
             self.charisma = self.stats[0]
             self.hit_die = 8
         elif self.char_class == "fighter":
-            n = randint(0, 1)
-            if n == 0:
+            if randint(0, 1):  # Coin toss
                 self.strength = self.stats[0]
                 self.stats.pop(0)
-                n2 = randint(0, 2)
-                if n2 == 0:
+                if randint(0, 2):  # 1 in 3
                     self.intelligence = self.stats[0]
                     self.stats.pop(0)
                     con = randint(0, 3)
@@ -638,8 +628,7 @@ class Character:
             else:
                 self.dexterity = self.stats[0]
                 self.stats.pop(0)
-                n2 = randint(0, 2)
-                if n2 == 0:
+                if randint(0, 2):  # 1 in 3
                     self.intelligence = self.stats[0]
                     self.stats.pop(0)
                     strength = randint(0, 3)
@@ -716,8 +705,7 @@ class Character:
         elif self.char_class == "rogue":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
-            n = randint(0, 1)
-            if n == 0:
+            if randint(0, 1):  # Coin toss
                 self.intelligence = self.stats[0]
                 self.stats.pop(0)
                 strength = randint(0, 3)
@@ -779,12 +767,10 @@ class Character:
         elif self.char_class == "wizard":
             self.intelligence = self.stats[0]
             self.stats.pop(0)
-            n = randint(0, 1)
-            if n == 0:
+            if randint(0, 1):  # Coin toss
                 self.constitution = self.stats[0]
                 self.stats.pop(0)
-                n2 = randint(0, 7)
-                if n2 == 0:
+                if randint(0, 7):  # 1 in 8
                     self.charisma = self.stats[0]
                     self.stats.pop(0)
                     strength = randint(0, 2)
@@ -808,8 +794,7 @@ class Character:
             else:
                 self.dexterity = self.stats[0]
                 self.stats.pop(0)
-                n2 = randint(0, 7)
-                if n2 == 0:
+                if randint(0, 7):  # 1 in 8
                     self.charisma = self.stats[0]
                     self.stats.pop(0)
                     strength = randint(0, 2)
@@ -836,16 +821,10 @@ class Character:
             self.strength += 2
             self.charisma += 1
             self.subrace = choice(DRACONIC_ANCESTRY)
-            if self.sex == "male":
-                self.name = (
-                    choice(DRAGONBORN_MALE) + " "
-                    + choice(DRAGONBORN_CLAN)
-                )
-            else:
-                self.name = (
-                    choice(DRAGONBORN_FEMALE) + " "
-                    + choice(DRAGONBORN_CLAN)
-                )
+            self.name = (
+                choice(DRAGONBORN_MALE + DRAGONBORN_FEMALE) + " "
+                + choice(DRAGONBORN_CLAN)
+            )
         elif self.race == "dwarf":
             self.constitution += 2
             sub_race = randint(0, 1)
@@ -855,16 +834,10 @@ class Character:
             else:
                 self.subrace = "Mountain dwarf"
                 self.strength += 2
-            if self.sex == "male":
-                self.name = (
-                    choice(DWARF_MALE) + " "
-                    + choice(DWARF_CLAN)
-                )
-            else:
-                self.name = (
-                    choice(DWARF_FEMALE) + " "
-                    + choice(DWARF_CLAN)
-                )
+            self.name = (
+                choice(DWARF_MALE + DWARF_FEMALE) + " "
+                + choice(DWARF_CLAN)
+            )
         elif self.race == "elf":
             self.dexterity += 2
             sub_race = randint(0, 1)
@@ -874,16 +847,10 @@ class Character:
             else:
                 self.subrace = "Wood elf"
                 self.wisdom += 1
-            if self.sex == "male":
-                self.name = (
-                    choice(ELF_MALE) + " "
-                    + choice(ELF_FAMILY)
-                    )
-            else:
-                self.name = (
-                    choice(ELF_FEMALE) + " "
-                    + choice(ELF_FAMILY)
-                )
+            self.name = (
+                choice(ELF_MALE + ELF_FEMALE) + " "
+                + choice(ELF_FAMILY)
+            )
         elif self.race == "gnome":
             self.intelligence += 2
             sub_race = randint(0, 1)
@@ -893,19 +860,12 @@ class Character:
             else:
                 self.subrace = "Rock gnome"
                 self.constitution += 1
-            if self.sex == "male":
-                self.name = (
-                    choice(GNOME_MALE) + " "
-                    + choice(GNOME_NICKNAME) + " "
-                    + choice(GNOME_CLAN)
-                )
-            else:
-                self.name = (
-                    choice(GNOME_FEMALE) + " "
-                    + choice(GNOME_NICKNAME) + " "
-                    + choice(GNOME_CLAN)
-                )
-        # elif self.race = "half elf'
+            self.name = (
+                choice(GNOME_MALE + GNOME_FEMALE) + " "
+                + choice(GNOME_NICKNAME) + " "
+                + choice(GNOME_CLAN)
+            )
+        # elif self.race = "half elf":
         elif self.race == "halfling":
             self.dexterity += 2
             sub_race = randint(0, 1)
@@ -915,24 +875,15 @@ class Character:
             else:
                 self.subrace = "Stout halfling"
                 self.constitution += 1
-            if self.sex == "male":
-                self.name = (
-                    choice(HALFLING_MALE) + " "
-                    + choice(HALFLING_FAMILY)
-                )
-            else:
-                self.name = (
-                    choice(HALFLING_FEMALE) + " "
-                    + choice(HALFLING_FAMILY)
-                )
+            self.name = (
+                choice(HALFLING_MALE + HALFLING_FEMALE) + " "
+                + choice(HALFLING_FAMILY)
+            )
         elif self.race == "half-orc":
             self.subrace = "N/A"
             self.strength += 2
             self.constitution += 1
-            if self.sex == "male":
-                self.name = choice(HALF_ORC_MALE)
-            else:
-                self.name = choice(HALF_ORC_FEMALE)
+            self.name = choice(HALF_ORC_MALE + HALF_ORC_FEMALE)
         elif self.race == "human":
             self.subrace = "N/A"
             self.strength += 1
@@ -946,10 +897,7 @@ class Character:
             self.subrace = "N/A"
             self.charisma += 2
             self.intelligence += 1
-            if self.sex == "male":
-                self.name = choice(TIEFLING_MALE)
-            else:
-                self.name = choice(TIEFLING_FEMALE)
+            self.name = choice(TIEFLING_MALE + TIEFLING_FEMALE)
 
         self.hit_points = self.hit_die + stat_mod(self.constitution)
         if self.subrace == "Hill dwarf":
