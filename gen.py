@@ -49,6 +49,23 @@ CHAR_CLASSES = [
     "warlock",
     "wizard",
 ]
+BACKGROUNDS = [
+    "Acolyte",
+    "Charlatan",
+    "Criminal/Spy",
+    "Entertainer",
+    "Folk Hero",
+    "Gladiator",
+    "Guild Artisan / Guild Merchant",
+    "Hermit",
+    "Knight",
+    "Noble",
+    "Outlander",
+    "Pirate",
+    "Sage",
+    "Sailor",
+    "Urchin"
+]
 # Dragonborn
 DRACONIC_ANCESTRY = [
     "Black",
@@ -475,6 +492,63 @@ TIEFLING_FEMALE = [
     "Phelaia",
     "Rieta",
 ]
+SIMPLE_MELEE = [
+    "Club",
+    "Dagger",
+    "Greatclub",
+    "Handaxe",
+    "Javelin",
+    "Light hammer",
+    "Mace",
+    "Quarterstaff",
+    "Sickle",
+    "Spear"
+]
+SIMPLE_RANGED = [
+    "Crossbow, light",
+    "Dart",
+    "Shortbow",
+    "Sling"
+]
+MARTIAL_MELEE = [
+    "Battleaxe",
+    "Flail",
+    "Glaive",
+    "Greataxe",
+    "Greatsword",
+    "Halberd",
+    "Lance",
+    "Longsword",
+    "Maul",
+    "Morningstar",
+    "Pike",
+    "Rapier",
+    "Scimitar",
+    "Shortsword",
+    "Trident",
+    "War pick",
+    "Warhammer",
+    "Whip"
+]
+MARTIAL_RANGED = [
+    "Blowgun",
+    "Crossbow, hand",
+    "Crossbow, heavy",
+    "Longbow",
+    "Net"
+]
+INSTRUMENTS = [
+    "Bagpipes",
+    "Drum",
+    "Dulcimer",
+    "Flute",
+    "Lute",
+    "Lyre",
+    "Horn",
+    "Pan flute",
+    "Shawm",
+    "Viol"
+]
 
 
 # Functions
@@ -488,6 +562,12 @@ def generate_class():
     """Generate a class"""
     char_class = choice(CHAR_CLASSES)
     return char_class
+
+
+def generate_background():
+    """Generate a background"""
+    background = choice(BACKGROUNDS)
+    return background
 
 
 def generate_stat():
@@ -530,8 +610,13 @@ class Character:
     def __init__(self):
         self.race = generate_race()
         self.char_class = generate_class()
+        self.background = generate_background()
         self.stats = generate_character_stats()
+        self.weapons = []
+        self.armor = []
+        self.equipment = []
 
+        # Barbarian
         if self.char_class == "barbarian":
             self.strength = self.stats[0]
             self.stats.pop(0)
@@ -548,6 +633,19 @@ class Character:
             self.stats.pop(wis)
             self.charisma = self.stats[0]
             self.hit_die = 12
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Greataxe")
+            else:
+                self.weapons.append(choice(MARTIAL_MELEE))
+            if weapon2 == 0:
+                self.weapons.append("two handaxes")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            self.equipment.append("Explorer's pack")
+            self.weapons.append("four javelins")
+        # Bard
         elif self.char_class == "bard":
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -564,6 +662,26 @@ class Character:
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 8
+            weapon1 = randint(0,2)
+            equip1 = randint(0,1)
+            equip2 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Rapier")
+            elif weapon1 == 1:
+                self.weapons.append("Longsword")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            if equip1 == 0:
+                self.equipment.append("Diplomat's pack")
+            else:
+                self.equipment.append("Entertainer's pack")
+            if equip2 == 0:
+                self.equipment.append("Lute")
+            else:
+                self.equipment.append(choice(INSTRUMENTS))
+            self.weapons.append("Dagger")
+            self.armor.append("Leather armor")
+        # Cleric
         elif self.char_class == "cleric":
             self.wisdom = self.stats[0]
             self.stats.pop(0)
@@ -580,6 +698,31 @@ class Character:
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            armor1 = randint(0,2)
+            equip1 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Mace")
+            else:
+                self.weapons.append("Warhammer")
+            if weapon2 == 0:
+                self.weapons.append("Light crossbow and 20 bolts")
+            else:
+                self.weapons.append(choice(SIMPLE_RANGED + SIMPLE_MELEE))
+            if armor1 == 0:
+                self.armor.append("Scale mail")
+            elif armor1 == 1:
+                self.armor.append("Leather armor")
+            else:
+                self.armor.append("Chain mail")
+            if equip1 == 0:
+                self.equipment.append("Priest's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.armor.append("Shield")
+            self.equipment.append("Holy symbol")
+        # Druid
         elif self.char_class == "druid":
             self.wisdom = self.stats[0]
             self.stats.pop(0)
@@ -596,6 +739,20 @@ class Character:
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            if weapon1 == 0:
+                self.armor.append("Wooden shield")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            if weapon2 == 0:
+                self.weapons.append("Scimitar")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE))
+            self.armor.append("Leather armor")
+            self.equipment.append("Explorer's pack")
+            self.equipment.append("Druidic focus")
+        # Fighter
         elif self.char_class == "fighter":
             if randint(0, 1):  # Coin toss
                 self.strength = self.stats[0]
@@ -654,6 +811,30 @@ class Character:
                     self.stats.pop(wis)
                     self.charisma = self.stats[0]
             self.hit_die = 10
+            armor1 = randint(0,1)
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            equip1 = randint(0,1)
+            if armor1 == 0:
+                self.armor.append("Chain mail")
+            else:
+                self.armor.append("Leather armor")
+                self.weapons.append("Longbow and 20 arrows")
+            if weapon1 == 0:
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+                self.armor.append("Shield")
+            else:
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+            if weapon2 == 0:
+                self.weapons.append("Light crossbow and 20 bolts")
+            else:
+                self.weapons.append("Two handaxes")
+            if equip1 == 0:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+        # Monk
         elif self.char_class == "monk":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -670,6 +851,18 @@ class Character:
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 8
+            weapon1 = randint(0,1)
+            equip1 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Shortsword")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            if equip1 == 0:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.weapons.append("10 darts")
+        # Paladin
         elif self.char_class == "paladin":
             self.strength = self.stats[0]
             self.stats.pop(0)
@@ -686,6 +879,25 @@ class Character:
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 10
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            equip1 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+                self.armor.append("Shield")
+            else:
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+                self.weapons.append(choice(MARTIAL_MELEE + MARTIAL_RANGED))
+            if weapon2 == 0:
+                self.weapons.append("Five javelins")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE))
+            if equip1 == 0:
+                self.equipment.append("Priest's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.armor.append("Chain mail")
+            self.equipment.append("Holy symbol")
         elif self.char_class == "ranger":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -702,6 +914,23 @@ class Character:
             self.stats.pop(intelligence)
             self.charisma = self.stats[0]
             self.hit_die = 10
+            armor1 = randint(0,1)
+            weapon1 = randint(0,1)
+            equip1 = randint(0,1)
+            if armor1 == 0:
+                self.armor.append("Scale mail")
+            else:
+                self.armor.append("Leather armor")
+            if weapon1 == 0:
+                self.weapons.append("Two shortswords")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE))
+                self.weapons.append(choice(SIMPLE_MELEE))
+            if equip1 == 0:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.weapons.append("Longbow and 20 arrows")
         elif self.char_class == "rogue":
             self.dexterity = self.stats[0]
             self.stats.pop(0)
@@ -732,6 +961,26 @@ class Character:
                 self.stats.pop(wis)
                 self.intelligence = self.stats[0]
             self.hit_die = 8
+            weapon1 = randint(0,1)
+            weapon2 = randint(0,1)
+            equip1 = randint(0,2)
+            if weapon1 == 0:
+                self.weapons.append("Rapier")
+            else:
+                self.weapons.append("Shortsword")
+            if weapon2 == 0:
+                self.weapons.append("Shortbow and 20 arrows")
+            else:
+                self.weapons.append("Shortsword")
+            if equip1 == 0:
+                self.equipment.append("Burglar's pack")
+            elif equip1 == 1:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.armor.append("Leather armor")
+            self.weapons.append("Two daggers")
+            self.equipment.append("Thieve's tools")
         elif self.char_class == "sorcerer":
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -748,6 +997,22 @@ class Character:
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
+            weapon1 = randint(0,1)
+            equip1 = randint(0,1)
+            equip2 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Light crossbow with 20 bolts")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            if equip1 == 0:
+                self.equipment.append("Component pouch")
+            else:
+                self.equipment.append("Arcane focus")
+            if equip2 == 0:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Explorer's pack")
+            self.weapons.append("Two daggers")
         elif self.char_class == "warlock":
             self.charisma = self.stats[0]
             self.stats.pop(0)
@@ -764,6 +1029,24 @@ class Character:
             self.stats.pop(intelligence)
             self.wisdom = self.stats[0]
             self.hit_die = 6
+            weapon1 = randint(0,1)
+            equip1 = randint(0,1)
+            equip2 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Light crossbow with 20 bolts")
+            else:
+                self.weapons.append(choice(SIMPLE_MELEE + SIMPLE_RANGED))
+            if equip1 == 0:
+                self.equipment.append("Component pouch")
+            else:
+                self.equipment.append("Arcane focus")
+            if equip2 == 0:
+                self.equipment.append("Dungeoneer's pack")
+            else:
+                self.equipment.append("Scholar's pack")
+            self.armor.append("Leather armor")
+            self.weapons.append(choice(SIMPLE_RANGED + SIMPLE_MELEE))
+            self.weapons.append("Two daggers")
         elif self.char_class == "wizard":
             self.intelligence = self.stats[0]
             self.stats.pop(0)
@@ -816,6 +1099,22 @@ class Character:
                     self.stats.pop(wis)
                     self.charisma = self.stats[0]
             self.hit_die = 6
+            weapon1 = randint(0,1)
+            equip1 = randint(0,1)
+            equip2 = randint(0,1)
+            if weapon1 == 0:
+                self.weapons.append("Quarterstaff")
+            else:
+                self.weapons.append("Dagger")
+            if equip1 == 0:
+                self.equipment.append("Component pouch")
+            else:
+                self.equipment.append("Arcane focus")
+            if equip2 == 0:
+                self.equipment.append("Explorer's pack")
+            else:
+                self.equipment.append("Scholar's pack")
+            self.equipment.append("Spellbook")
 
         if self.race == "dragonborn":
             self.strength += 2
@@ -903,6 +1202,8 @@ class Character:
         if self.subrace == "Hill dwarf":
             self.hit_points += 1
 
+        self.initiative = stat_mod(self.dexterity)
+
 
 NEW_CHARACTER = Character()
 
@@ -910,6 +1211,7 @@ print("Name:", NEW_CHARACTER.name)
 print("Race:", NEW_CHARACTER.race.capitalize())
 print("Subrace:", NEW_CHARACTER.subrace)
 print("Class:", NEW_CHARACTER.char_class.capitalize())
+print("Background:", NEW_CHARACTER.background)
 print("STR:", NEW_CHARACTER.strength)
 print("DEX:", NEW_CHARACTER.dexterity)
 print("CON:", NEW_CHARACTER.constitution)
@@ -917,3 +1219,7 @@ print("INT:", NEW_CHARACTER.intelligence)
 print("WIS:", NEW_CHARACTER.wisdom)
 print("CHA:", NEW_CHARACTER.charisma)
 print("Hit Points:", NEW_CHARACTER.hit_points)
+print("Initiative:", NEW_CHARACTER.initiative)
+print("Weapons:", NEW_CHARACTER.weapons)
+print("Armor", NEW_CHARACTER.armor)
+print("Equipment:", NEW_CHARACTER.equipment)
