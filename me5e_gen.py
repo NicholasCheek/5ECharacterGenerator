@@ -132,9 +132,117 @@ class Character:
         self.stats = generate_character_stats()
 
 
+        #Adept
+        if self.char_class == "adept":
+            self.wisdom = self.stats[0]
+            self.stats.pop(0)
+            self.charisma = self.stats[0]
+            self.stats.pop(0)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dexterity = randint(0, 2)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            constitution = randint(0, 1)
+            self.constitution = self.stats[constitution]
+            self.stats.pop(constitution)
+            self.intelligence = self.stats[0]
+        #Engineer
+        elif self.char_class == "engineer":
+            self.intelligence = self.stats[0]
+            self.stats.pop(0)
+            self.constitution = self.stats[0]
+            self.stats.pop(0)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dexterity = randint(0, 2)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            wisdom = randint(0, 1)
+            self.wisdom = self.stats[wisdom]
+            self.stats.pop(wisdom)
+            self.charisma = self.stats[0]
+        #Infiltrator
+        elif self.char_class == "infiltrator":
+            dexterity = randint(0, 1)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            self.intelligence = self.stats[0]
+            self.stats.pop(0)
+            strength = randint(0, 3)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            constitution = randint(0, 2)
+            self.constitution = self.stats[constitution]
+            self.stats.pop(constitution)
+            wisdom = randint(0, 1)
+            self.wisdom = self.stats[wisdom]
+            self.stats.pop(wisdom)
+            self.charisma = self.stats[0]
+        #Sentinel
+        elif self.char_class == "sentinel":
+            intelligence = randint(0, 2)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
+            wisdom =randint(0, 1)
+            self.wisdom = self.stats[wisdom]
+            self.stats.pop(wisdom)
+            self.charisma = self.stats[0]
+            self.stats.pop(0)
+            strength = randint(0, 2)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dexterity = randint(0, 1)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            self.constitution = self.stats[0]
+        #Soldier
+        elif self.char_class == "soldier":
+            strength = randint(0, 1)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            dexterity = randint(0, 1)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            self.constitution = self.stats[0]
+            self.stats.pop(0)
+            intelligence = randint(0, 2)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
+            wisdom = randint(0, 1)
+            self.wisdom = self.stats[wisdom]
+            self.stats.pop(wisdom)
+            self.charisma = self.stats[0]
+        #Vanguard
+        elif self.char_class == "vanguard":
+            strength = randint(0, 1)
+            self.strength = self.stats[strength]
+            self.stats.pop(strength)
+            self.wisdom = self.stats[0]
+            self.stats.pop(0)
+            self.constitution = self.stats[0]
+            self.stats.pop(0)
+            intelligence = randint(0, 2)
+            self.intelligence = self.stats[intelligence]
+            self.stats.pop(intelligence)
+            dexterity = randint(0, 1)
+            self.dexterity = self.stats[dexterity]
+            self.stats.pop(dexterity)
+            self.charisma = self.stats[0]
+        
+
+
+
 NEW_CHARACTER = Character()
 
 print("Species:", NEW_CHARACTER.species.capitalize())
 print("Class:", NEW_CHARACTER.char_class.capitalize())
 print("Background:", NEW_CHARACTER.background.capitalize())
-print("Stats:", NEW_CHARACTER.stats)
+print("STR:", NEW_CHARACTER.strength)
+print("DEX:", NEW_CHARACTER.dexterity)
+print("CON:", NEW_CHARACTER.constitution)
+print("INT:", NEW_CHARACTER.intelligence)
+print("WIS:", NEW_CHARACTER.wisdom)
+print("CHA:", NEW_CHARACTER.charisma)
