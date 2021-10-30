@@ -130,6 +130,8 @@ class Character:
         self.char_class = generate_class()
         self.background = generate_background()
         self.stats = generate_character_stats()
+        self.weapons = []
+        self.armor = []
 
 
         #Adept
@@ -148,6 +150,17 @@ class Character:
             self.constitution = self.stats[constitution]
             self.stats.pop(constitution)
             self.intelligence = self.stats[0]
+            weapon1 = randint(0, 1)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            else:
+                self.weapons.append("M-4 Shuriken")
+            weapon2 = randint(0, 1)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            else:
+                self.weapons.append("Monomolecular Blade")
+            self.armor.append("Stock Light Armor")
         #Engineer
         elif self.char_class == "engineer":
             self.intelligence = self.stats[0]
@@ -164,6 +177,25 @@ class Character:
             self.wisdom = self.stats[wisdom]
             self.stats.pop(wisdom)
             self.charisma = self.stats[0]
+            weapon1 = randint(0, 2)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            elif weapon1 == 1:
+                self.weapons.append("M-4 Shuriken")
+            else:
+                self.weapons.append("M-8 Avenger")
+            weapon2 = randint(0, 2)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            elif weapon2 == 1:
+                self.weapons.append("Omni-Taser")
+            else:
+                self.weapons.append("Omni-Torch")
+            armor1 = randint(0, 1)
+            if armor1 == 0:
+                self.armor.append("Stock Light Armor")
+            else:
+                self.armor.append("Stock Medium Armor")
         #Infiltrator
         elif self.char_class == "infiltrator":
             dexterity = randint(0, 1)
@@ -181,6 +213,21 @@ class Character:
             self.wisdom = self.stats[wisdom]
             self.stats.pop(wisdom)
             self.charisma = self.stats[0]
+            weapon1 = randint(0, 2)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            elif weapon1 == 1:
+                self.weapons.append("M-4 Shuriken")
+            else:
+                self.weapons.append("M-92 Mantis")
+            weapon2 = randint(0, 2)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            elif weapon2 == 1:
+                self.weapons.append("Omni-Taser")
+            else:
+                self.weapons.append("Monomolecular Blade")
+            self.armor.append("Stock Light Armor")
         #Sentinel
         elif self.char_class == "sentinel":
             intelligence = randint(0, 2)
@@ -198,6 +245,29 @@ class Character:
             self.dexterity = self.stats[dexterity]
             self.stats.pop(dexterity)
             self.constitution = self.stats[0]
+            weapon1 = randint(0, 2)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            elif weapon1 == 1:
+                self.weapons.append("M-4 Shuriken")
+            else:
+                self.weapons.append("M-8 Avenger")
+            weapon2 = randint(0, 3)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            elif weapon2 == 1:
+                self.weapons.append("Omni-Hammer")
+            elif weapon2 == 2:
+                self.weapons.append("Monomolecular Blade")
+            else:
+                self.weapons.append("Riot Shield")
+            armor1 = randint(0, 2)
+            if armor1 == 0:
+                self.armor.append("Stock Light Armor")
+            elif armor1 == 1:
+                self.armor.append("Stock Medium Armor")
+            else:
+                self.armor.append("Stock Heavy Armor")
         #Soldier
         elif self.char_class == "soldier":
             strength = randint(0, 1)
@@ -215,6 +285,29 @@ class Character:
             self.wisdom = self.stats[wisdom]
             self.stats.pop(wisdom)
             self.charisma = self.stats[0]
+            weapon1 = randint(0, 4)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            elif weapon1 == 1:
+                self.weapons.append("M-4 Shuriken")
+            elif weapon1 == 2:
+                self.weapons.append("M-8 Avenger")
+            elif weapon1 == 3:
+                self.weapons.append("M-92 Mantis")
+            else:
+                self.weapons.append("M-23 Katana")
+            weapon2 = randint(0, 1)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            else:
+                self.weapons.append("Omni-Hammer")
+            armor1 = randint(0, 2)
+            if armor1 == 0:
+                self.armor.append("Stock Light Armor")
+            elif armor1 == 1:
+                self.armor.append("Stock Medium Armor")
+            else:
+                self.armor.append("Stock Heavy Armor")
         #Vanguard
         elif self.char_class == "vanguard":
             strength = randint(0, 1)
@@ -231,6 +324,28 @@ class Character:
             self.dexterity = self.stats[dexterity]
             self.stats.pop(dexterity)
             self.charisma = self.stats[0]
+            weapon1 = randint(0, 2)
+            if weapon1 == 0:
+                self.weapons.append("M-3 Predator")
+            elif weapon1 == 1:
+                self.weapons.append("M-4 Shuriken")
+            else:
+                self.weapons.append("M-23 Katana")
+            weapon2 = randint(0, 3)
+            if weapon2 == 0:
+                self.weapons.append("Omni-Blade")
+            elif weapon2 == 1:
+                self.weapons.append("Omni-Hammer")
+            elif weapon2 == 2:
+                self.weapons.append("Monomolecular Blade")
+            else:
+                self.weapons.append("Riot Shield")
+            armor1 = randint(0, 1)
+            if armor1 == 0:
+                self.armor.append("Stock Light Armor")
+            else:
+                self.armor.append("Stock Medium Armor")
+            
         
 
 
@@ -246,3 +361,5 @@ print("CON:", NEW_CHARACTER.constitution)
 print("INT:", NEW_CHARACTER.intelligence)
 print("WIS:", NEW_CHARACTER.wisdom)
 print("CHA:", NEW_CHARACTER.charisma)
+print("Weapons:", NEW_CHARACTER.weapons)
+print("Armor:", NEW_CHARACTER.armor)
