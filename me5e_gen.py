@@ -59,7 +59,7 @@ BACKGROUNDS = [
     "doctor",
     "entertainer",
     "escort",
-    "experient",
+    "experiment",
     "faction agent",
     "pilot",
     "scholar",
@@ -132,6 +132,19 @@ class Character:
         self.stats = generate_character_stats()
         self.weapons = []
         self.armor = []
+
+
+
+        # Hit Die
+        hit_die_sizes = {
+            "adept": 6,
+            "engineer": 8,
+            "infiltrator": 8,
+            "sentinel": 10,
+            "soldier": 10,
+            "vanguard": 12
+        }
+        self.hit_die = hit_die_sizes[self.char_class]
 
 
         #Adept
@@ -345,6 +358,9 @@ class Character:
                 self.armor.append("Stock Light Armor")
             else:
                 self.armor.append("Stock Medium Armor")
+
+            
+        self.hit_points = self.hit_die + stat_mod(self.constitution)
             
         
 
@@ -355,6 +371,7 @@ NEW_CHARACTER = Character()
 print("Species:", NEW_CHARACTER.species.capitalize())
 print("Class:", NEW_CHARACTER.char_class.capitalize())
 print("Background:", NEW_CHARACTER.background.capitalize())
+print("Hit Points:", NEW_CHARACTER.hit_points)
 print("STR:", NEW_CHARACTER.strength)
 print("DEX:", NEW_CHARACTER.dexterity)
 print("CON:", NEW_CHARACTER.constitution)
